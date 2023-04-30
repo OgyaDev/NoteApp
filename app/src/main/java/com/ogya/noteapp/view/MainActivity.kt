@@ -18,7 +18,6 @@ import com.ogya.noteapp.datamanager.DataManager
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val dm = DataManager()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +31,7 @@ class MainActivity : AppCompatActivity() {
     private fun spinnerPopulate() {
         val adapterCourses = ArrayAdapter<CourseInfo>(this,
             android.R.layout.simple_spinner_item,
-            dm.courses.values.toList())
+            DataManager.courses.values.toList())
         adapterCourses.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.contentMain.courseSpinner.adapter = adapterCourses
     }
