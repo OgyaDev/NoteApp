@@ -3,6 +3,7 @@ package com.ogya.noteapp.view
 import android.content.res.ColorStateList
 import android.graphics.PorterDuff
 import android.os.Bundle
+import android.os.PersistableBundle
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -35,7 +36,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
         spinnerPopulate()
-        notePosition = intent.getIntExtra(IntentConstants.EXTRA_NOTE_POSITION, POSITION_NOT_SET)
+        notePosition = savedInstanceState?.getInt(IntentConstants.EXTRA_NOTE_POSITION, POSITION_NOT_SET) ?:
+            intent.getIntExtra(IntentConstants.EXTRA_NOTE_POSITION, POSITION_NOT_SET)
         if (notePosition != POSITION_NOT_SET) {
             displayNote()
         }
@@ -47,6 +49,11 @@ class MainActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         saveNote()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt(IntentConstants.EXTRA_NOTE_POSITION, notePosition)
     }
 
     private fun createNewNote() {
