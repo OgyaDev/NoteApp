@@ -12,6 +12,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.ogya.noteapp.IntentConstants
 import com.ogya.noteapp.R
+import com.ogya.noteapp.data.NoteInfo
 import com.ogya.noteapp.databinding.ActivityNoteListBinding
 import com.ogya.noteapp.datamanager.DataManager
 
@@ -41,5 +42,14 @@ class NoteListActivity : AppCompatActivity() {
             activityIntent.putExtra(IntentConstants.EXTRA_NOTE_POSITION, position)
             startActivity(activityIntent)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        (binding.contentNoteList.noteList.adapter as ArrayAdapter<NoteInfo>).notifyDataSetChanged()
     }
 }

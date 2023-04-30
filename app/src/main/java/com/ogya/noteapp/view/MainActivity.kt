@@ -39,11 +39,19 @@ class MainActivity : AppCompatActivity() {
         if (notePosition != POSITION_NOT_SET) {
             displayNote()
         }
+        else{
+            createNewNote()
+        }
     }
 
     override fun onPause() {
         super.onPause()
         saveNote()
+    }
+
+    private fun createNewNote() {
+        DataManager.notes.add(NoteInfo())
+        notePosition = DataManager.notes.lastIndex
     }
 
     private fun saveNote() {
