@@ -41,6 +41,18 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onPause() {
+        super.onPause()
+        saveNote()
+    }
+
+    private fun saveNote() {
+        val note = DataManager.notes[notePosition]
+        note.title = binding.contentMain.noteTitle.text.toString()
+        note.text = binding.contentMain.noteText.text.toString()
+        note.course = binding.contentMain.courseSpinner.selectedItem as CourseInfo
+    }
+
     private fun displayNote() {
         val note = DataManager.notes[notePosition]
         binding.contentMain.noteTitle.setText(note.title)
