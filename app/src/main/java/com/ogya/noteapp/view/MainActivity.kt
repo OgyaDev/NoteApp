@@ -10,14 +10,18 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ArrayAdapter
+import com.ogya.noteapp.IntentConstants
 import com.ogya.noteapp.R
 import com.ogya.noteapp.data.CourseInfo
 import com.ogya.noteapp.databinding.ActivityMainBinding
 import com.ogya.noteapp.datamanager.DataManager
 
+const val POSITION_NOT_SET = -1
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    var notePosition = POSITION_NOT_SET
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +30,19 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
         spinnerPopulate()
+        displayNote()
+    }
+
+    private fun displayNote() {
+        notePosition = intent.getIntExtra(IntentConstants.EXTRA_NOTE_POSITION, POSITION_NOT_SET)
+        if(notePosition != POSITION_NOT_SET){
+            val note = DataManager.notes[notePosition]
+            binding.contentMain.noteTitle.setText(note.title)
+            binding.contentMain.noteText.setText(note.text)
+
+            val coursePosition = DataManager.courses.values.indexOf(note.course)
+            binding.contentMain.courseSpinner.setSelection(coursePosition)
+        }
     }
 
     private fun spinnerPopulate() {
