@@ -12,6 +12,8 @@ object DataManager {
         initializeNotes()
     }
 
+    fun ArrayList<NoteInfo>.getFirstIndex() : Int { return 0 }
+
     private fun initializeCourses() {
         var course = CourseInfo("android_intents", "Android Programming with Intents")
         courses.set(course.courseId, course)

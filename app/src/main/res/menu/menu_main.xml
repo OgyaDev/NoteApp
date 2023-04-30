@@ -2,9 +2,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.ogya.noteapp.view.MainActivity">
+
     <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
+        android:id="@+id/actionBack"
+        android:orderInCategory="99"
+        android:title="Back"
+        android:icon="@drawable/ic_baseline_arrow_back_white_24"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/actionNext"
+        android:orderInCategory="101"
+        android:title="Next"
+        android:icon="@drawable/ic_baseline_arrow_forward_white_24"
+        app:showAsAction="ifRoom"/>
+
 </menu>
