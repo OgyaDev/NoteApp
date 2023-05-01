@@ -33,15 +33,7 @@ class NoteListActivity : AppCompatActivity() {
             startActivity(activityIntent)
         }
 
-        binding.contentNoteList.noteList.adapter = ArrayAdapter(this,
-            android.R.layout.simple_list_item_1,
-            DataManager.notes)
 
-        binding.contentNoteList.noteList.setOnItemClickListener { parant, view, position, id ->
-            val activityIntent = Intent(this, MainActivity::class.java)
-            activityIntent.putExtra(IntentConstants.EXTRA_NOTE_POSITION, position)
-            startActivity(activityIntent)
-        }
     }
 
     override fun onResume() {
@@ -50,6 +42,5 @@ class NoteListActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        (binding.contentNoteList.noteList.adapter as ArrayAdapter<NoteInfo>).notifyDataSetChanged()
     }
 }
