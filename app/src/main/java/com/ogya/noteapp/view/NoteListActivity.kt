@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ogya.noteapp.databinding.ActivityNoteListBinding
+import com.ogya.noteapp.datamanager.DataManager
 
 class NoteListActivity : AppCompatActivity() {
 
@@ -24,7 +25,7 @@ class NoteListActivity : AppCompatActivity() {
         }
 
         binding.contentNoteList.listNoteItems.layoutManager = LinearLayoutManager(this)
-
+        binding.contentNoteList.listNoteItems.adapter = NoteRecyclerAdapter(this, DataManager.notes)
     }
 
     override fun onResume() {

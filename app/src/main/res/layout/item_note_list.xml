@@ -31,7 +31,7 @@
                 app:tint="@color/purple_500" />
 
             <TextView
-                android:id="@+id/itemNoteTitle"
+                android:id="@+id/itemNoteTextCourseTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -45,16 +45,14 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/itemNoteText"
+                android:id="@+id/itemNoteTextNoteTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/itemNoteTitle"
-                app:layout_constraintStart_toStartOf="@+id/itemNoteTitle"
-                app:layout_constraintTop_toBottomOf="@+id/itemNoteTitle" />
+                app:layout_constraintEnd_toEndOf="@+id/itemNoteTextCourseTitle"
+                app:layout_constraintStart_toStartOf="@+id/itemNoteTextCourseTitle"
+                app:layout_constraintTop_toBottomOf="@+id/itemNoteTextCourseTitle" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
