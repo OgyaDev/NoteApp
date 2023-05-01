@@ -1,43 +1,34 @@
 package com.ogya.noteapp.view
 
-import android.content.res.ColorStateList
-import android.graphics.PorterDuff
 import android.os.Bundle
-import android.os.PersistableBundle
-import com.google.android.material.snackbar.Snackbar
-import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ArrayAdapter
-import androidx.core.content.ContextCompat
+import androidx.appcompat.app.AppCompatActivity
 import com.ogya.noteapp.IntentConstants
 import com.ogya.noteapp.R
 import com.ogya.noteapp.data.CourseInfo
 import com.ogya.noteapp.data.NoteInfo
-import com.ogya.noteapp.databinding.ActivityMainBinding
+import com.ogya.noteapp.databinding.ActivityNoteBinding
 import com.ogya.noteapp.datamanager.DataManager
 import com.ogya.noteapp.datamanager.DataManager.getFirstIndex
 
 const val POSITION_NOT_SET = -1
 
-class MainActivity : AppCompatActivity() {
+class NoteActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityNoteBinding
     var notePosition = POSITION_NOT_SET
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityNoteBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
         spinnerPopulate()
         notePosition = savedInstanceState?.getInt(IntentConstants.EXTRA_NOTE_POSITION, POSITION_NOT_SET) ?:
-            intent.getIntExtra(IntentConstants.EXTRA_NOTE_POSITION, POSITION_NOT_SET)
+                intent.getIntExtra(IntentConstants.EXTRA_NOTE_POSITION, POSITION_NOT_SET)
         if (notePosition != POSITION_NOT_SET) {
             displayNote()
         }

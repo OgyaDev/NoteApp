@@ -20,7 +20,7 @@ class NoteListActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
 
         binding.fab.setOnClickListener { view ->
-           val activityIntent = Intent(this,MainActivity::class.java)
+           val activityIntent = Intent(this,NoteActivity::class.java)
             startActivity(activityIntent)
         }
 
@@ -34,5 +34,6 @@ class NoteListActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
+        binding.contentNoteList.listNoteItems.adapter?.notifyDataSetChanged()
     }
 }
