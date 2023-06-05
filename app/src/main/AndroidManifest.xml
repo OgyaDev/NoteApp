@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NoteApp">
         <activity
-            android:name=".view.NoteListActivity"
+            android:name=".view.ItemsActivity"
             android:exported="true"
             android:label="@string/title_activity_note_list"
             android:theme="@style/Theme.NoteApp.NoActionBar">
@@ -19,6 +19,12 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".view.NoteListActivity"
+            android:exported="true"
+            android:label="@string/title_activity_note_list"
+            android:theme="@style/Theme.NoteApp.NoActionBar">
         </activity>
         <activity
             android:name=".view.NoteActivity"
